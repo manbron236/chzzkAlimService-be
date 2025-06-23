@@ -39,21 +39,22 @@ public class ChzzkService {
 
                 if (response.getStatusCode() == HttpStatus.OK) {
                     String body = response.getBody();
-                    System.out.println("▶ 응답 원문: " + body);
+//                    System.out.println("▶ 응답 원문: " + body);
 
                     JsonNode root = objectMapper.readTree(body);
                     JsonNode content = root.path("content");
 
                     if (content.isMissingNode() || content.isNull()) {
-                        System.out.println("⚠️ 'data' 필드가 없습니다: " + streamer.getStreamerName());
+                        System.out.println("⚠️ 'content' 필드가 없습니다: " + streamer.getStreamerName());
                         continue;
                     }
 
                     String status = content.path("status").asText();
-                    System.out.println("▶ 스트리머: " + streamer.getStreamerName() + ", 상태: " + status);
+//                    System.out.println("▶ 스트리머: " + streamer.getStreamerName() + ", 상태: " + status);
 
                     if ("OPEN".equals(status)) {
-                        String thumbnail = content.path("liveImageUrl").asText();
+                        String rawThumbnail = content.path("liveImageUrl").asText();
+                        String thumbnail = rawThumbnail.replace("{type}", "480");
                         String link = "https://chzzk.naver.com/live/" + streamer.getStreamerId();
 
                         liveList.add(new LiveInfo(

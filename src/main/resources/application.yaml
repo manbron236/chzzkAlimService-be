@@ -1,7 +1,0 @@
-discord:
-  webhook:
-    url: "https://discord.com/api/webhooks/1386629284625514536/yvK6-eHkkV3mEZEFzE1D106LO13ktx9qpV2IZoRshI_G_5NEBTju143XK0REyIbnllIf"
-chzzk:
-  client-id: chzzk-web
-server:
-  port: 8080
