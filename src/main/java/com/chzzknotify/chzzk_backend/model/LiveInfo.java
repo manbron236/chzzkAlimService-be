@@ -1,5 +1,6 @@
 package com.chzzknotify.chzzk_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,8 @@ public class LiveInfo {
     private String liveTitle;
     private List<String> tags;
     private String category;
+
+    @JsonProperty("concurrentUserCount")
+    private int concurrentUserCount;
     private boolean isLive;
 }

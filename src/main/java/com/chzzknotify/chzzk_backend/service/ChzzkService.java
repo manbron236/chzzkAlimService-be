@@ -59,6 +59,8 @@ public class ChzzkService {
 
                         String liveTitle = content.path("liveTitle").asText();
                         String category = content.path("liveCategoryValue").asText();
+                        int concurrentUserCount = content.path("concurrentUserCount").asInt();
+
 
                         List<String> tags = new ArrayList<>();
                         if (content.has("tags") && content.get("tags").isArray()) {
@@ -75,7 +77,8 @@ public class ChzzkService {
                                 liveTitle,
                                 tags,
                                 category,
-                                true
+                                concurrentUserCount,
+                        true
                         ));
                     }
                 }
