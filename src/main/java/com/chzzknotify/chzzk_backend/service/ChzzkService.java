@@ -57,11 +57,24 @@ public class ChzzkService {
                         String thumbnail = rawThumbnail.replace("{type}", "480");
                         String link = "https://chzzk.naver.com/live/" + streamer.getStreamerId();
 
+                        String liveTitle = content.path("liveTitle").asText();
+                        String category = content.path("liveCategoryValue").asText();
+
+                        List<String> tags = new ArrayList<>();
+                        if (content.has("tags") && content.get("tags").isArray()) {
+                            for (JsonNode tag : content.get("tags")) {
+                                tags.add(tag.asText());
+                            }
+                        }
+
                         liveList.add(new LiveInfo(
                                 streamer.getStreamerId(),
                                 streamer.getStreamerName(),
                                 thumbnail,
                                 link,
+                                liveTitle,
+                                tags,
+                                category,
                                 true
                         ));
                     }
