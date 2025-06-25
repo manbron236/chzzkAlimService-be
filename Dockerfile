@@ -4,8 +4,8 @@ FROM eclipse-temurin:17-jdk-alpine
 # 2. 작업 디렉토리 생성
 WORKDIR /app
 
-# 3. jar 파일 복사 (뒤에서 ./gradlew bootJar 실행하고 복사 예정)
-COPY build/libs/*.jar app.jar
+# 3. jar 파일 복사
+COPY build/libs/chzzk-backend-0.0.1-SNAPSHOT.jar app.jar
 
 # 4. 포트 노출 (Spring Boot 기본 포트)
 EXPOSE 8080
