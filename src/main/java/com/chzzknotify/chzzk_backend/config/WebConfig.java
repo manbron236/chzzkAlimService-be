@@ -19,11 +19,14 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/{x:[\\w\\-]+}")
+        // Spring 6.x: ** 뒤에는 경로 변수 허용 안되므로, 고정 깊이로 처리
+        registry.addViewController("/{path}")
                 .setViewName("forward:/index.html");
-        registry.addViewController("/**/{x:[\\w\\-]+}")
+        registry.addViewController("/{path1}/{path2}")
                 .setViewName("forward:/index.html");
-        registry.addViewController("/{x:[\\w\\-]+}/**/{y:[\\w\\-]+}")
+        registry.addViewController("/{path1}/{path2}/{path3}")
+                .setViewName("forward:/index.html");
+        registry.addViewController("/{path1}/{path2}/{path3}/{path4}")
                 .setViewName("forward:/index.html");
     }
 }
