@@ -1,0 +1,9 @@
+chzzk:
+  client-id: chzzk-web
+server:
+  port: 8080
+discord:
+  webhook:
+    url: "https://discord.com/api/webhooks/12345/test-webhook-for-ci"
+cors:
+  allowed-origins: http://localhost:3000
